@@ -43,7 +43,11 @@
         <section class="about section" id="about">
           <div class="about-visual">
             <div class="portrait-card">
-              <div class="portrait-placeholder" aria-label="Foto da Ranna"></div>
+              <img
+                class="portrait-image"
+                src="../imagens/ranna_perfil.jpeg"
+                alt="Ranna Ronchetti Caldonho"
+              />
             </div>
           </div>
 
@@ -61,8 +65,51 @@
               direção, sabendo por quê você está fazendo cada coisa e conseguindo
               manter isso até o dia da prova.
             </p>
+
+            <div class="about-actions">
+              <button class="btn btn-secondary" id="openBioBtn" type="button">
+                Quem sou eu
+              </button>
+            </div>
           </div>
         </section>
+
+        <div class="bio-modal" id="bioModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="bioTitle">
+          <div class="bio-modal-panel">
+            <button class="close-modal" id="closeBioBtn" type="button" aria-label="Fechar">
+              ×
+            </button>
+
+            <div class="bio-modal-content">
+              <div class="bio-modal-image-wrap">
+                <img
+                  class="bio-modal-image"
+                  src="../imagens/ranna_perfil.jpeg"
+                  alt="Ranna Ronchetti Caldonho"
+                />
+              </div>
+
+              <div class="bio-modal-copy">
+                <p class="modal-kicker">Quem sou eu</p>
+                <h3 id="bioTitle">Ranna Ronchetti Caldonho</h3>
+                <p>
+                  Sou Ranna, e meu trabalho nasceu da vontade de ajudar estudantes a
+                  viverem a rotina com mais clareza, menos cobrança e mais direção.
+                </p>
+                <p>
+                  Durante três anos, acompanhei de perto alunos de pré-vestibular e vi
+                  como o medo, a ansiedade e a sobrecarga podem transformar o estudo em
+                  uma batalha constante. A CLAREIA nasceu para ser um espaço de acolhimento,
+                  estratégia e apoio real.
+                </p>
+                <p>
+                  Aqui, o objetivo não é fazer o aluno correr mais. É ajudar a construir
+                  uma rotina que funcione de verdade — com leveza, consistência e propósito.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <section class="what-is section" id="what-is">
           <h2>O que é a assessoria</h2>
@@ -216,5 +263,33 @@
         <p>CLAREIA • Assessoria de Estudos • por Ranna Ronchetti Caldonho</p>
       </footer>
     </div>
+
+    <script>
+      const bioModal = document.getElementById('bioModal');
+      const openBioBtn = document.getElementById('openBioBtn');
+      const closeBioBtn = document.getElementById('closeBioBtn');
+
+      function toggleBioModal(forceOpen) {
+        const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !bioModal.classList.contains('is-open');
+        bioModal.classList.toggle('is-open', shouldOpen);
+        bioModal.setAttribute('aria-hidden', String(!shouldOpen));
+        document.body.style.overflow = shouldOpen ? 'hidden' : '';
+      }
+
+      openBioBtn.addEventListener('click', () => toggleBioModal(true));
+      closeBioBtn.addEventListener('click', () => toggleBioModal(false));
+
+      bioModal.addEventListener('click', (event) => {
+        if (event.target === bioModal) {
+          toggleBioModal(false);
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && bioModal.classList.contains('is-open')) {
+          toggleBioModal(false);
+        }
+      });
+    </script>
   </body>
 </html>

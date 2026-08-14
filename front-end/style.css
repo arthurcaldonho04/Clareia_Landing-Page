@@ -24,6 +24,31 @@ body {
   background: var(--bg-page);
   color: var(--text);
   font-family: 'Nunito', sans-serif;
+  position: relative;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(127, 205, 184, 0.2);
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::before {
+  width: 360px;
+  height: 360px;
+  left: -120px;
+  top: 70px;
+}
+
+body::after {
+  width: 420px;
+  height: 420px;
+  right: -130px;
+  bottom: 20px;
 }
 
 img {
@@ -31,7 +56,7 @@ img {
   display: block;
 }
 
- a {
+a {
   text-decoration: none;
 }
 
@@ -39,6 +64,8 @@ img {
   max-width: 1280px;
   margin: 0 auto;
   padding: 20px 40px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .topbar {
@@ -151,24 +178,15 @@ img {
   padding: 18px;
   box-shadow: 0 12px 28px rgba(61, 43, 31, 0.08);
   max-width: 620px;
-}
-
-.portrait-placeholder {
-  width: 100%;
-  min-height: 520px;
-  border-radius: 28px;
-  background: linear-gradient(135deg, #b8e0d2 0%, #9fceb7 35%, #d7c7a5 100%);
-  position: relative;
   overflow: hidden;
 }
 
-.portrait-placeholder::before {
-  content: "";
-  position: absolute;
-  inset: auto 20% 0 20%;
-  height: 58%;
-  background: rgba(255, 255, 255, 0.24);
-  border-radius: 40% 40% 0 0;
+.portrait-image {
+  width: 100%;
+  min-height: 520px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
 }
 
 .about-copy h2,
@@ -187,10 +205,20 @@ img {
 .what-is p,
 .plan-card p,
 .step-content p,
-.final-cta p {
+.final-cta p,
+.bio-modal-copy p {
   font-size: 1.12rem;
   line-height: 1.7;
   color: var(--muted);
+}
+
+.about-actions {
+  margin-top: 24px;
+}
+
+.about-actions .btn {
+  border-width: 2px;
+  padding: 14px 28px;
 }
 
 .what-is {
@@ -428,6 +456,87 @@ img {
   margin-top: 34px;
 }
 
+.bio-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 19, 15, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 20;
+}
+
+.bio-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bio-modal-panel {
+  position: relative;
+  width: min(920px, 100%);
+  background: var(--bg-box);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 22px 60px rgba(26, 19, 15, 0.18);
+  border: 1px solid rgba(61, 43, 31, 0.08);
+}
+
+.close-modal {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 2.3rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.bio-modal-content {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  gap: 26px;
+  align-items: center;
+}
+
+.bio-modal-image-wrap {
+  max-width: 300px;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 16px 35px rgba(61, 43, 31, 0.12);
+}
+
+.bio-modal-image {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+}
+
+.modal-kicker {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  font-weight: 800;
+}
+
+.bio-modal-copy h3 {
+  margin: 0 0 18px;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.bio-modal-copy p {
+  margin: 0 0 14px;
+}
+
 .footer {
   border-top: 1px solid var(--line);
   margin-top: 24px;
@@ -452,6 +561,15 @@ img {
 
   .about {
     gap: 26px;
+  }
+
+  .bio-modal-content {
+    grid-template-columns: 1fr;
+  }
+
+  .bio-modal-image-wrap {
+    max-width: 220px;
+    margin: 0 auto;
   }
 
   .step::before {
