@@ -69,20 +69,42 @@ a {
 }
 
 .topbar {
+  position: sticky;
+  top: 18px;
+  z-index: 20;
+  display: flex;
+  justify-content: flex-end;
   padding-top: 10px;
+}
+
+.nav-shell {
+  background: rgba(35, 28, 24, 0.48);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  box-shadow: 0 16px 32px rgba(25, 18, 14, 0.16);
 }
 
 .nav {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 28px;
-  padding: 20px 0;
+  padding: 16px 22px;
 }
 
 .nav a {
-  color: var(--text);
+  color: #f4f1eb;
   font-size: 1.05rem;
   font-weight: 700;
+  opacity: 0.96;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
 }
 
 .section {
