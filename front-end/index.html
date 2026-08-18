@@ -40,9 +40,6 @@
             <h1>Assessoria de Estudos</h1>
             <p class="tagline">Estudar com propósito, clareza e equilíbrio</p>
             <p class="byline">por Ranna Ronchetti Caldonho</p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#contact">Fale comigo</a>
-            </div>
           </div>
         </section>
 
@@ -73,7 +70,7 @@
             </p>
 
             <div class="about-actions">
-              <button class="btn btn-secondary" id="openBioBtn" type="button">
+              <button class="btn btn-secondary" type="button" data-open-modal="bioModal">
                 Quem sou eu
               </button>
             </div>
@@ -82,7 +79,7 @@
 
         <div class="bio-modal" id="bioModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="bioTitle">
           <div class="bio-modal-panel">
-            <button class="close-modal" id="closeBioBtn" type="button" aria-label="Fechar">
+            <button class="close-modal" type="button" data-close-modal aria-label="Fechar">
               ×
             </button>
 
@@ -114,6 +111,74 @@
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="plan-modal" id="planIndividualModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="planIndividualTitle">
+          <div class="plan-modal-panel">
+            <button class="close-modal" type="button" data-close-modal aria-label="Fechar">
+              ×
+            </button>
+
+            <p class="modal-kicker">Cronograma Individual</p>
+            <h3 id="planIndividualTitle">Como funciona esse plano</h3>
+
+            <p>
+              O processo começa assim: você responde a uma anamnese completa, eu
+              estudo suas respostas e monto um cronograma personalizado, você testa
+              esse cronograma na prática por alguns dias e a gente se encontra numa
+              reunião de alinhamento pra ajustar o que for preciso com base no teste.
+            </p>
+
+            <ul class="plan-modal-list">
+              <li>Anamnese completa</li>
+              <li>Cronograma personalizado com base nas suas respostas</li>
+              <li>Dias de teste na prática</li>
+              <li>Reunião de alinhamento final</li>
+            </ul>
+
+            <p>
+              Nesse plano, o processo se encerra depois dessa reunião. Você sai com um
+              cronograma testado e redondo pra sua rotina. Se aparecer necessidade de
+              um ajuste pontual mais à frente — sempre com base nos dias de teste — a
+              gente resolve, mas não há acompanhamento semanal incluso.
+            </p>
+
+            <a class="btn btn-primary" href="#contact" data-close-modal>Fale comigo</a>
+          </div>
+        </div>
+
+        <div class="plan-modal" id="planMentoriaModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="planMentoriaTitle">
+          <div class="plan-modal-panel">
+            <button class="close-modal" type="button" data-close-modal aria-label="Fechar">
+              ×
+            </button>
+
+            <p class="modal-kicker">Mentoria Completa</p>
+            <h3 id="planMentoriaTitle">Como funciona esse plano</h3>
+
+            <p>
+              O processo começa da mesma forma: anamnese completa, cronograma
+              personalizado, dias de teste na prática e uma reunião de alinhamento pra
+              ajustar o cronograma com base no que funcionou.
+            </p>
+
+            <p>
+              A diferença é que, a partir daí, eu continuo com você: reajusto o
+              cronograma junto, semana a semana, incluindo blocos de estudo extras
+              quando for preciso. Também ensino você a fazer a correção detalhada dos
+              simulados e acompanho seu desempenho numa planilha própria, que uso pra
+              direcionar suas revisões.
+            </p>
+
+            <ul class="plan-modal-list">
+              <li>Reajustes recorrentes no cronograma</li>
+              <li>Blocos de estudo extras quando precisar</li>
+              <li>Correção detalhada de simulados</li>
+              <li>Planilha própria de acompanhamento de desempenho</li>
+            </ul>
+
+            <a class="btn btn-primary" href="#contact" data-close-modal>Fale comigo</a>
           </div>
         </div>
 
@@ -182,70 +247,82 @@
             <article class="plan-card">
               <h3>Cronograma Individual</h3>
               <p>
-                Uma agenda de estudos feita para a sua rotina, com prioridades
-                definidas, ciclo de revisões e orientações de uso.
+                Uma agenda de estudos feita pra sua rotina, testada na prática e
+                ajustada numa reunião final — um processo com começo, meio e fim, sem
+                acompanhamento contínuo depois disso.
               </p>
 
               <ul>
                 <li>Anamnese completa</li>
-                <li>Cronograma personalizado</li>
-                <li>Ajute após a primeira semana</li>
+                <li>Cronograma personalizado com base no seu perfil</li>
+                <li>Dias de teste + reunião de alinhamento final</li>
+                <li>Processo com início, meio e fim definidos</li>
               </ul>
 
-              <a class="btn btn-primary" href="#contact">Fale comigo</a>
+              <button class="btn btn-primary" type="button" data-open-modal="planIndividualModal">
+                Saiba mais
+              </button>
             </article>
 
             <article class="plan-card">
               <h3>Mentoria Completa</h3>
               <p>
-                O cronograma mais acompanhamento contínuo, em encontros semanais ou
-                quinzenais, para ajustar a rota junto com você.
+                O mesmo cronograma testado e ajustado, mas com acompanhamento
+                contínuo: a gente segue junto, semana a semana, reajustando a rota até
+                a reta final.
               </p>
 
               <ul>
-                <li>Encontros semanais ou quinzenais</li>
-                <li>Suporte no WhatsApp entre as sessões</li>
-                <li>Revisão mensal de metas</li>
+                <li>Acompanhamento contínuo, semana a semana</li>
+                <li>Reajustes no cronograma, com blocos extras quando precisar</li>
+                <li>Correção detalhada de simulados</li>
+                <li>Planilha própria de desempenho para direcionar as revisões</li>
               </ul>
 
-              <a class="btn btn-primary" href="#contact">Fale comigo</a>
+              <button class="btn btn-primary" type="button" data-open-modal="planMentoriaModal">
+                Saiba mais
+              </button>
             </article>
           </div>
         </section>
 
         <section class="process section" id="process">
           <h2>Como funciona</h2>
+          <p class="section-subtitle">
+            O ponto de partida é o mesmo para os dois planos — a diferença começa depois
+            da reunião de alinhamento.
+          </p>
 
           <div class="timeline">
             <div class="step">
               <div class="step-number">01</div>
               <div class="step-content">
-                <h3>Anamnese inicial</h3>
-                <p>Um questionário para entender sua rotina, sua meta e seus desafios.</p>
+                <h3>Anamnese</h3>
+                <p>Você responde a um questionário completo sobre rotina, metas e desafios.</p>
               </div>
             </div>
 
             <div class="step">
               <div class="step-number">02</div>
               <div class="step-content">
-                <h3>Sessão de alinhamento</h3>
-                <p>Reunião online para montarmos juntos o plano de estudos.</p>
+                <h3>Cronograma personalizado</h3>
+                <p>Eu estudo suas respostas e monto um cronograma pensado pra sua realidade.</p>
               </div>
             </div>
 
             <div class="step">
               <div class="step-number">03</div>
               <div class="step-content">
-                <h3>Acompanhamento semanal</h3>
-                <p>Suporte pelo WhatsApp para ajustar o que não está funcionando.</p>
+                <h3>Dias de teste</h3>
+                <p>Você testa o cronograma na prática, no seu dia a dia real, por alguns dias.</p>
               </div>
             </div>
 
             <div class="step">
               <div class="step-number">04</div>
               <div class="step-content">
-                <h3>Revisão mensal</h3>
-                <p>Olhamos o que avançou e recalibramos as prioridades do mês.</p>
+                <h3>Reunião de alinhamento</h3>
+                <p>A gente se encontra pra ajustar o cronograma com base no que funcionou no teste.</p>
               </div>
             </div>
           </div>
@@ -258,15 +335,37 @@
           </p>
 
           <div class="contact-actions">
-            <a class="btn btn-primary btn-wide" href="https://wa.me/5527998343548?text=Oi%20Ranna!%20Vim%20pelo%20site%20do%20CLAREIA%20e%20quero%20saber%20mais%20sobre%20a%20assessoria%20de%20estudos." target="_blank" rel="noreferrer">WhatsApp</a>
-            <a class="btn btn-secondary btn-wide" href="mailto:rannacaldonho@gmail.com">E-mail</a>
-            <a class="btn btn-secondary btn-wide" href="https://www.instagram.com/rannacaldonho/" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="btn btn-primary btn-wide" href="https://wa.me/5527998343548?text=Oi%20Ranna!%20Vim%20pelo%20site%20do%20CLAREIA%20e%20quero%20saber%20mais%20sobre%20a%20assessoria%20de%20estudos." target="_blank" rel="noreferrer">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.48 1.32 5L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.02c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11a16.6 16.6 0 0 1-1.62-.6c-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.55-1.16-2.96 0-1.4.73-2.09 1-2.38.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.15.11.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.41.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.24 2.22 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.19-.27.38-.22.63-.13.26.09 1.66.78 1.94.92.28.14.47.21.54.33.07.12.07.68-.17 1.36Z"/>
+              </svg>
+              <span>WhatsApp</span>
+            </a>
+            <a class="btn btn-secondary btn-wide" href="https://mail.google.com/mail/?view=cm&fs=1&to=rannacaldonho@gmail.com&su=Contato%20-%20Site%20CLAREIA&body=Oi%20Ranna!%20Vim%20pelo%20site%20do%20CLAREIA%20e%20quero%20saber%20mais%20sobre%20a%20assessoria%20de%20estudos." target="_blank" rel="noreferrer">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="3" y="5" width="18" height="14" rx="2.5"/>
+                <path d="m4 6.5 8 6.5 8-6.5"/>
+              </svg>
+              <span>E-mail</span>
+            </a>
+            <a class="btn btn-secondary btn-wide" href="https://www.instagram.com/rannacaldonho/" target="_blank" rel="noreferrer">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false">
+                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                <circle cx="12" cy="12" r="4.2"/>
+                <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+              <span>Instagram</span>
+            </a>
           </div>
         </section>
       </main>
 
       <footer class="footer">
-        <p>CLAREIA • Assessoria de Estudos • por Ranna Ronchetti Caldonho</p>
+        <p class="footer-line">© 2026 CLAREIA • Assessoria de Estudos • por Ranna Ronchetti Caldonho</p>
+        <p class="footer-credit">
+          Desenvolvido por
+          <a href="https://github.com/arthurcaldonho04" target="_blank" rel="noopener noreferrer">Arthur R. Caldonho</a>
+        </p>
       </footer>
     </div>
 

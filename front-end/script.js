@@ -1,25 +1,33 @@
-const bioModal = document.getElementById('bioModal');
-const openBioBtn = document.getElementById('openBioBtn');
-const closeBioBtn = document.getElementById('closeBioBtn');
+function setupModal(modal) {
+  function toggle(forceOpen) {
+    const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !modal.classList.contains('is-open');
+    modal.classList.toggle('is-open', shouldOpen);
+    modal.setAttribute('aria-hidden', String(!shouldOpen));
+    document.body.style.overflow = shouldOpen ? 'hidden' : '';
+  }
 
-function toggleBioModal(forceOpen) {
-  const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !bioModal.classList.contains('is-open');
-  bioModal.classList.toggle('is-open', shouldOpen);
-  bioModal.setAttribute('aria-hidden', String(!shouldOpen));
-  document.body.style.overflow = shouldOpen ? 'hidden' : '';
+  modal.querySelectorAll('[data-close-modal]').forEach((closeEl) => {
+    closeEl.addEventListener('click', () => toggle(false));
+  });
+
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      toggle(false);
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+      toggle(false);
+    }
+  });
+
+  return toggle;
 }
 
-openBioBtn.addEventListener('click', () => toggleBioModal(true));
-closeBioBtn.addEventListener('click', () => toggleBioModal(false));
-
-bioModal.addEventListener('click', (event) => {
-  if (event.target === bioModal) {
-    toggleBioModal(false);
-  }
-});
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && bioModal.classList.contains('is-open')) {
-    toggleBioModal(false);
-  }
+document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+  const modal = document.getElementById(trigger.dataset.openModal);
+  if (!modal) return;
+  const toggle = setupModal(modal);
+  trigger.addEventListener('click', () => toggle(true));
 });
