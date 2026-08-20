@@ -238,8 +238,7 @@ a {
 }
 
 .about-actions .btn {
-  border-width: 2px;
-  padding: 14px 28px;
+  width: fit-content;
 }
 
 .what-is {
