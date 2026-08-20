@@ -402,6 +402,12 @@ a {
   width: fit-content;
 }
 
+.plan-note {
+  margin: 0 0 20px;
+  font-size: 0.85rem;
+  color: rgba(0, 47, 216, 0.404);
+}
+
 .timeline {
   display: grid;
   grid-template-columns: repeat(4, minmax(180px, 1fr));
