@@ -759,6 +759,11 @@ a {
   margin-top: 6px;
 }
 
+.plan-modal-panel .plan-modal-note {
+  color: rgb(177, 185, 177);
+  font-size: 15px;
+}
+
 .footer {
   border-top: 1px solid var(--line);
   margin-top: 24px;
